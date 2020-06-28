@@ -41,7 +41,7 @@ var connector = function (application) {
     var filename = path.join(__dirname, cn);
 
     /*  spawn the connector as a child process  */
-    this.c = spawn(filename.replace('app.asar', 'app.asar.unpack'), [], {
+    this.c = spawn(filename.replace('app.asar', 'app.asar.unpacked'), [], {
         stdio: [ "pipe", "pipe", process.stderr ],
         env: { "CONNECTOR": "FIXME" }
     });
