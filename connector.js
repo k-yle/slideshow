@@ -26,7 +26,6 @@ var connectors = {
     "darwin-powerpoint":     "connector-osx-ppt2011.sh",
     "darwin-powerpoint2011": "connector-osx-ppt2011.sh",
     "darwin-powerpoint2016": "connector-osx-ppt2011.sh",
-    "browser-powerpoint":    "connector-win-ppt2010.bat",
     "win32-powerpoint":      "connector-win-ppt2010.bat",
     "win32-powerpoint2010":  "connector-win-ppt2010.bat",
     "win32-powerpoint2013":  "connector-win-ppt2010.bat"
@@ -42,7 +41,7 @@ var connector = function (application) {
     var filename = path.join(__dirname, cn);
 
     /*  spawn the connector as a child process  */
-    this.c = spawn(filename, [], {
+    this.c = spawn(filename.replace('app.asar', 'app.asar.unpack'), [], {
         stdio: [ "pipe", "pipe", process.stderr ],
         env: { "CONNECTOR": "FIXME" }
     });
